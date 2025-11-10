@@ -1,93 +1,224 @@
-# admin-react-interview-task
+# Hilbi React Interview Task
 
+- A full-stack React application for the Hilbi interview task, featuring a modern frontend and a mock backend server.
+- This project is designed to assess your React, TypeScript, and frontend development skills.
 
+---
 
-## Getting started
+## 👀 Project Overview
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+This is a **User Management System** built with React and TypeScript. The application helps manage users in a credit balance system.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## ✅ What's Already Set Up For You
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/hilbi-public/admin-react-interview-task.git
-git branch -M main
-git push -uf origin main
+hilbi-react-interview-task/
+├── public/                # Static assets and manifest
+├── server/                # Mock backend API (Express)
+│   ├── app.js             # Main server file
+│   ├── package.json       # Server dependencies
+│   └── data/
+│       └── users.js       # Example user data
+├── src/                   # Frontend source code (React + TypeScript)
+│   ├── assets/            # Static assets (images, etc.)
+│   ├── components/        # Reusable UI components (buttons, forms, etc.)
+│   ├── hooks/             # Custom React hooks
+│   ├── integrations/      # Integration configs (i18n, TanStack Query, etc.)
+│   ├── layouts/           # Layout components
+│   ├── locales/           # Localization files
+│   ├── routes/            # App routes (React Router)
+│   ├── styles/            # Global and modular styles
+│   ├── types/             # TypeScript types
+│   ├── main.tsx           # App entry point
+│   └── ...
+├── package.json           # Frontend dependencies & scripts
+├── tsconfig.json          # TypeScript config
+├── vite.config.ts         # Vite config
+└── README.md
 ```
 
-## Integrate with your tools
+- **React 19** with TypeScript
+- **Vite** for fast development and builds
+- **TanStack Router** for advanced routing
+- **TanStack Query** for data fetching and caching
+- **Ant Design (antd)** and **Tailwind CSS** for UI
+- **Ant Design Icons** for prepared icons
+- **i18next** for internationalization
+- **Vitest** and **Testing Library** for testing
+- **Prettier** and **ESLint** for code quality
+- **Mock Express server** with Swagger docs for API
 
-- [ ] [Set up project integrations](https://gitlab.com/hilbi-public/admin-react-interview-task/-/settings/integrations)
+### UI & Tailwind CSS & CSS
 
-## Collaborate with your team
+This project uses [Ant Design (antd)](https://ant.design/), [Tailwind CSS](https://tailwindcss.com/) and CSS Modules (SCSS) for building the UI.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+#### Tailwind Prefix
 
-## Test and Deploy
+To avoid class name conflicts with Ant Design and other libraries, all Tailwind CSS classes in this project are prefixed with `tw:`.
 
-Use the built-in continuous integration in GitLab.
+**Example:**
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+```jsx
+<div className="tw:flex tw:items-center tw:gap-2">...</div>
+```
 
-***
+Make sure to use the `tw:` prefix for all Tailwind classes in your components.
 
-# Editing this README
+#### SCSS & CSS Modules
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+In addition to Tailwind, this project supports modular and component-scoped styles using SCSS and CSS Modules.
 
-## Suggestions for a good README
+**Usage:** Import SCSS module files directly into your React components:
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+```tsx
+import styles from './base-layout.module.scss'
+;<div className={styles.container}>...</div>
+```
 
-## Name
-Choose a self-explaining name for your project.
+This approach helps prevent style conflicts and keeps component styles maintainable.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Router Configuration
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+This project uses [TanStack Router](https://tanstack.com/router) for advanced routing. The main router configuration is located in `src/routes/routes.tsx`.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- **Route Definitions:**
+  - All application routes are defined in `src/routes/routes.tsx` using TanStack Router's declarative API.
+  - Nested routes and layouts are supported for modular structure.
+- **Code Splitting:**
+  - The router is configured for automatic code splitting, so only the code for the current route is loaded.
+- **Route Tree Generation:**
+  - The file `src/routeTree.gen.ts` is auto-generated to optimize route handling and should not be edited manually.
+- **Devtools:**
+  - Router devtools are available for debugging and can be enabled in development mode.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+For more details, see the comments in `src/routes/routes.tsx` and the [TanStack Router documentation](https://tanstack.com/router/docs).
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+---
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## 🎯 **Your Tasks**
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Task 1: Create a Dashboard (Homepage)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+![](./docs/user-manager-dashboard.png)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+**Objective**: Implement a dashboard based on the provided design in figma file (`docs/hilbi.fig`).
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+**Requirements**:
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+- Display welcome message with breadcrumbs
+- Display key statistics (total users, active users, inactive users)
+- Show a "Last active users" section with 5 latest registered **active** users
+  - this section should include a quick action to go to the list page
+- Match the design and layout shown in the mockup
+- Fetch real data from the API endpoints (real data might differ from values in design mockup)
 
-## License
-For open source projects, say how it is licensed.
+### Task 2: Users Table with Filtering
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Objective**: Create a users page with a table that allows filtering by state. Design is up to you.
+
+**Requirements**:
+
+- Display all users in a table format
+- Include relevant user information
+  - full name, email, status, address, account balance, date of creation
+- Implement filtering by status placed above the table
+- Make sure the table can handle large data sets
+
+---
+
+### ℹ️ Your Freedom
+
+While we've provided a solid foundation, **you're free to:**
+
+- Install and use any libraries you prefer
+- Modify the existing code structure if needed
+- Add your own components, utilities, or helpers
+- Choose your preferred working style (patterns and approaches)
+
+### 🔍 **What We're Looking For**
+
+- Correctness of your solution
+- Performance
+- Clean, readable, and maintainable code
+- Proper TypeScript usage
+- Effective use of React patterns
+- Good component structure and separation of concerns
+- Error handling and loading states
+- Attention to detail in matching the design
+
+You're not expected to finish everything, but it's better to do less and properly than to do more and poorly.
+
+### 📝 **Notes**
+
+- **TypeScript**: You'll need to create your own type definitions by examining the API responses
+- **Data**: The server contains realistic mock data
+- **Time**: Focus on code quality, proper TypeScript usage, and clean component architecture
+- **Questions**: Feel free to ask questions about requirements or clarifications
+
+---
+
+## 🚀 **Getting Started**
+
+### 💻 **Client** (`/src` folder)
+
+#### 1. Install dependencies
+
+```bash
+npm install
+```
+
+#### 2. Start the frontend (React app)
+
+```bash
+npm run dev
+```
+
+The frontend runs on [http://localhost:3000](http://localhost:3000) by default.
+
+### 🖥️ **Server** (`/server` folder)
+
+#### 3. Start the backend server (API)
+
+In a separate terminal:
+
+```bash
+cd server
+npm install
+npm start
+```
+
+The backend runs on [http://localhost:50000](http://localhost:50000) by default.
+Swagger API docs: [http://localhost:50000/api-docs](http://localhost:50000/api-docs)
+
+---
+
+## 📤 **How to Submit Your Solution**
+
+⚠️ **Important**: Do NOT push your changes to our original repository. You must create your own repository for your solution.
+
+1. **Create your own repository**:
+   - Create a **public repository** on either:
+     - **GitHub** (github.com)
+     - **Gitlab** (gitlab.com)
+
+2. **Set up your working repository**:
+
+   ```bash
+   # After cloning our repository and making your changes
+   git remote remove origin
+   git remote add origin https://github.com/your-username/your-repo-name.git
+   # (or your Azure DevOps URL)
+
+   # Squash all your work into a single commit
+   git add .
+   git commit -m "Complete interview tasks: Dashboard and Users table with filtering"
+   git push -u origin main
+   ```
+
+3. **Submit the link**:
+   - Send us the public repository URL
+   - Make sure the repository is accessible without authentication
+
+Good luck! 🚀
