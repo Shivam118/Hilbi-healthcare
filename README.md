@@ -124,6 +124,7 @@ For more details, see the comments in `src/routes/routes.tsx` and the [TanStack 
 - Include relevant user information
   - full name, email, status, address, account balance, date of creation
 - Implement filtering by status placed above the table
+  - store filter state in query params
 - Make sure the table can handle large data sets
 
 ---
@@ -199,9 +200,9 @@ Swagger API docs: [http://localhost:50000/api-docs](http://localhost:50000/api-d
 ⚠️ **Important**: Do NOT push your changes to our original repository. You must create your own repository for your solution.
 
 1. **Create your own repository**:
-   - Create a **public repository** on either:
-     - **GitHub** (github.com)
-     - **Gitlab** (gitlab.com)
+	 - Create a **public repository** on either:
+	 - **GitHub** (github.com)
+	 - **Gitlab** (gitlab.com)
 
 2. **Set up your working repository**:
 
@@ -218,7 +219,13 @@ Swagger API docs: [http://localhost:50000/api-docs](http://localhost:50000/api-d
    ```
 
 3. **Submit the link**:
-   - Send us the public repository URL
-   - Make sure the repository is accessible without authentication
+	- Review your work carefully and send us the **public** repository URL to interviews@hilbi.com.
+		- Make sure the repository is accessible without authentication
+	- If we didn't talk beforehand
+		- In the subject line, write: Your Name - I want join Hilbi
+		- In the email body, tell us why you want to work with us, list your top 3 strengths or skills, and attach your CV.
+
+We'll get back to you soon - and if you made it this far, you're already just one step away from joining a global product. 🌍
 
 Good luck! 🚀
+
