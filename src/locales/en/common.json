@@ -1,6 +1,7 @@
 {
+  "serverURL": "http://localhost:50000",
   "dashboard": {
-    "title": "Dashboard",
+    "title": "Home",
     "description": "Welcome to your dashboard!"
   },
   "usersList": {

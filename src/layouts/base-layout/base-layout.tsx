@@ -15,8 +15,13 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     () => [
       {
         key: '/',
-        label: <Link to="/">Dashboard</Link>,
+        label: <Link to="/">Home</Link>,
         icon: <HomeOutlined />,
+      },
+      {
+        key: '/users/list',
+        label: <Link to="/users/list">Users List</Link>,
+        icon: <UserOutlined />,
       },
     ],
     [],
@@ -24,7 +29,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <Layout className={classes['app-layout']}>
-      <Layout.Header className={classes['app-header']}>
+      <Layout.Header className={`${classes['app-header']}`}>
         <Link to="/" className={`${classes['app-logo-wrapper']} tw:mr-4`}>
           <div className={classes['demo-logo']} />
           <div className="tw:text-white tw:text-2xl tw:font-bold">
@@ -38,10 +43,7 @@ const BaseLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           className={classes['app-menu']}
           selectedKeys={[last]}
         />
-        <div className="tw:text-white tw:ml-4">
-          <UserOutlined className="tw:mr-2" />
-          John Doe
-        </div>
+        <div className="tw:text-white tw:ml-4">John Doe</div>
       </Layout.Header>
       <Layout.Content>{children}</Layout.Content>
     </Layout>
