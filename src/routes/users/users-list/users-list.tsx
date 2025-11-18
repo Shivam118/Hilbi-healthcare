@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { createFileRoute } from '@tanstack/react-router'
-import { Breadcrumb, Card, Table } from 'antd'
-import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { createFileRoute } from '@tanstack/react-router'
+import { Card, Table } from 'antd'
+import React, { useCallback, useEffect, useState } from 'react'
+import type { TableColumnsType, TableProps } from 'antd';
 import type { User } from '@/utils/types';
 
 const UsersList: React.FunctionComponent = () => {
@@ -37,9 +38,7 @@ const UsersList: React.FunctionComponent = () => {
     }
   }, [t, page, statusFilter])
 
-  console.log(data);
-
-  const dataColumns = [
+  const dataColumns: TableColumnsType<User> = [
     {
       title: 'Full Name',
       key: 'fullName',
@@ -91,10 +90,19 @@ const UsersList: React.FunctionComponent = () => {
     fetchUsers()
   }, [fetchUsers]);
 
+  const handleChange: TableProps<User>['onChange'] = (pagination, filters) => {
+    setPage(pagination.current || 1)
+    const newStatus =
+      filters.status && filters.status.length > 0
+        ? (filters.status[0] as string)
+        : 'all'
+    setStatusFilter(newStatus)
+  }
+
   return (
     <div className="tw:py-4 tw:px-16">
       <Card title={t('usersList.title')}>
-        <Table
+        <Table<User>
           rowKey="id"
           columns={dataColumns}
           loading={loading}
@@ -107,14 +115,7 @@ const UsersList: React.FunctionComponent = () => {
               setPage(p)
             },
           }}
-          onChange={(pagination, filters) => {
-            setPage(pagination.current || 1)
-            const newStatus =
-              filters.status && filters.status.length > 0
-                ? (filters.status[0] as string)
-                : 'all'
-            setStatusFilter(newStatus)
-          }}
+          onChange={handleChange}
         />
       </Card>
     </div >
